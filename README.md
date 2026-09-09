@@ -71,18 +71,16 @@ erDiagram
 
 ## 環境構築手順
 
-このプロジェクトは Laravel Sail（Docker）で動作します。あらかじめ Docker Desktop 等を起動しておいてください。
-
 ```bash
 # 1. リポジトリを取得
 git clone https://github.com/tezuka0/confirm-test.git
 cd confirm-test
 
 # 2. 環境変数ファイルを準備
-cp .env.example .env
+cp .env
 ```
 
-`.env` のDB接続情報が以下と一致していることを確認してください（Sailのデフォルト値です）。
+`.env` のDBを以下のように編集してください。
 
 ````
 DB_CONNECTION=mysql
@@ -121,6 +119,7 @@ sail npm run build
 
 起動後、`http://localhost` でアプリケーションにアクセスできます。管理画面へは以下のシードユーザーでログインできます。
 
+- 管理者画面アドレス　`http://localhost/admin`
 - メールアドレス: `test@example.com`
 - パスワード: `password`
 
