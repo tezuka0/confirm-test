@@ -17,3 +17,9 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
+
+# Vite temporary config files
+vite.config.js.timestamp-*.mjs
+
+# Local scratch (files Claude couldn't delete directly; safe to remove via Finder)
+/_to_delete/
