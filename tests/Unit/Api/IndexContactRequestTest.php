@@ -14,7 +14,7 @@ class IndexContactRequestTest extends TestCase
 
     private function rules(): array
     {
-        return (new IndexContactRequest())->rules();
+        return (new IndexContactRequest)->rules();
     }
 
     public function test_キーワード_性別_カテゴリ_日付_per_pageは有効(): void
@@ -47,7 +47,7 @@ class IndexContactRequestTest extends TestCase
         $this->assertArrayHasKey('per_page', $validator->errors()->toArray());
     }
 
-    public function test_存在しないカテゴリIDは拒否される(): void
+    public function test_存在しないカテゴリ_i_dは拒否される(): void
     {
         $validator = Validator::make(['category_id' => 9999], $this->rules());
 

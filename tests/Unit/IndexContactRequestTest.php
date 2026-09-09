@@ -14,7 +14,7 @@ class IndexContactRequestTest extends TestCase
 
     private function rules(): array
     {
-        return (new IndexContactRequest())->rules();
+        return (new IndexContactRequest)->rules();
     }
 
     public function test_キーワード_性別_カテゴリ_日付フィルタは有効(): void

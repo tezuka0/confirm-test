@@ -6,8 +6,8 @@ use App\Http\Requests\StoreTagRequest;
 use App\Http\Requests\UpdateTagRequest;
 use App\Models\Tag;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Validator;
 use Tests\TestCase;
 
 class TagRequestTest extends TestCase
@@ -20,7 +20,7 @@ class TagRequestTest extends TestCase
 
         $validator = Validator::make(
             ['name' => '質問'],
-            (new StoreTagRequest())->rules()
+            (new StoreTagRequest)->rules()
         );
 
         $this->assertTrue($validator->fails());
@@ -28,7 +28,7 @@ class TagRequestTest extends TestCase
 
     public function test_タグ名の未入力は拒否される(): void
     {
-        $validator = Validator::make([], (new StoreTagRequest())->rules());
+        $validator = Validator::make([], (new StoreTagRequest)->rules());
 
         $this->assertTrue($validator->fails());
     }

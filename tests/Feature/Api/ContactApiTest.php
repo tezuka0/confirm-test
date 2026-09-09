@@ -11,7 +11,7 @@ class ContactApiTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_一覧がJSON形式で返る(): void
+    public function test_一覧が_jso_n形式で返る(): void
     {
         $category = Category::create(['content' => '商品トラブル']);
         Contact::create([
@@ -34,7 +34,7 @@ class ContactApiTest extends TestCase
         ]);
     }
 
-    public function test_存在しないIDの詳細は404でエラーJSONが返る(): void
+    public function test_存在しない_i_dの詳細は404でエラー_jso_nが返る(): void
     {
         $response = $this->getJson('/api/v1/contacts/99999');
 

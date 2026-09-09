@@ -7,9 +7,9 @@ use App\Http\Requests\StoreContactRequest;
 use App\Models\Category;
 use App\Models\Contact;
 use App\Models\Tag;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Arr;
 use Illuminate\View\View;
-use Illuminate\Http\RedirectResponse;
 use Symfony\Component\HttpFoundation\StreamedResponse;
 
 class ContactController extends Controller
@@ -47,7 +47,7 @@ class ContactController extends Controller
 
         $contact = Contact::create(Arr::except($validated, ['tag_ids']));
 
-        if (!empty($validated['tag_ids'])) {
+        if (! empty($validated['tag_ids'])) {
             $contact->tags()->attach($validated['tag_ids']);
         }
 
@@ -77,15 +77,15 @@ class ContactController extends Controller
             })
             ->when(
                 array_key_exists('gender', $validated) && (int) $validated['gender'] !== 0,
-                fn($query) => $query->where('gender', $validated['gender'])
+                fn ($query) => $query->where('gender', $validated['gender'])
             )
-            ->when($validated['category_id'] ?? null, fn($query, $categoryId) => $query->where('category_id', $categoryId))
-            ->when($validated['date'] ?? null, fn($query, $date) => $query->whereDate('created_at', $date))
+            ->when($validated['category_id'] ?? null, fn ($query, $categoryId) => $query->where('category_id', $categoryId))
+            ->when($validated['date'] ?? null, fn ($query, $date) => $query->whereDate('created_at', $date))
             ->latest()
             ->get();
 
         $genderLabels = [1 => '男性', 2 => '女性', 3 => 'その他'];
-        $filename = 'contacts_' . now()->format('YmdHis') . '.csv';
+        $filename = 'contacts_'.now()->format('YmdHis').'.csv';
 
         $headers = [
             'Content-Type' => 'text/csv; charset=UTF-8',
@@ -103,7 +103,7 @@ class ContactController extends Controller
             foreach ($contacts as $contact) {
                 fputcsv($stream, [
                     $contact->id,
-                    $contact->first_name . ' ' . $contact->last_name,
+                    $contact->first_name.' '.$contact->last_name,
                     $genderLabels[$contact->gender] ?? '',
                     $contact->email,
                     $contact->tel,

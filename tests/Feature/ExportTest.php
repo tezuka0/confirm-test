@@ -12,14 +12,14 @@ class ExportTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_未認証ユーザーはCSVをダウンロードできない(): void
+    public function test_未認証ユーザーは_cs_vをダウンロードできない(): void
     {
         $response = $this->get('/contacts/export');
 
         $response->assertRedirect('/login');
     }
 
-    public function test_認証済みユーザーはCSVをダウンロードできる(): void
+    public function test_認証済みユーザーは_cs_vをダウンロードできる(): void
     {
         $user = User::factory()->create();
         $category = Category::create(['content' => '商品トラブル']);

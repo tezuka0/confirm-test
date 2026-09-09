@@ -14,7 +14,7 @@ class StoreContactRequestTest extends TestCase
 
     private function rules(): array
     {
-        return (new StoreContactRequest())->rules();
+        return (new StoreContactRequest)->rules();
     }
 
     public function test_全ての必須項目が揃っていれば通過する(): void

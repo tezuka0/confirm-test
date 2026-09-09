@@ -14,7 +14,7 @@ class ExportContactRequestTest extends TestCase
 
     private function rules(): array
     {
-        return (new ExportContactRequest())->rules();
+        return (new ExportContactRequest)->rules();
     }
 
     public function test_正しいフィルタ条件は全て通過する(): void
@@ -46,7 +46,7 @@ class ExportContactRequestTest extends TestCase
         $this->assertArrayHasKey('gender', $validator->errors()->toArray());
     }
 
-    public function test_存在しないカテゴリIDは拒否される(): void
+    public function test_存在しないカテゴリ_i_dは拒否される(): void
     {
         $validator = Validator::make(['category_id' => 9999], $this->rules());
 

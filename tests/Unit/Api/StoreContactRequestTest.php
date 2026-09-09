@@ -15,7 +15,7 @@ class StoreContactRequestTest extends TestCase
 
     private function rules(): array
     {
-        return (new StoreContactRequest())->rules();
+        return (new StoreContactRequest)->rules();
     }
 
     public function test_全ての必須項目とタグ入力を受け付ける(): void
@@ -67,7 +67,7 @@ class StoreContactRequestTest extends TestCase
         $this->assertArrayHasKey('tel', $validator->errors()->toArray());
     }
 
-    public function test_存在しないタグIDは拒否される(): void
+    public function test_存在しないタグ_i_dは拒否される(): void
     {
         $category = Category::create(['content' => 'その他']);
 
